@@ -534,7 +534,6 @@ class SourceConfiguration(ConfigurationBase):
         subclass = source_configuration_types.get(source_type)
         if not subclass:
             raise ConfigurationError("unknown source type '%s'" % source_type)
-
         return subclass(conf, context)
 
     @memoize
@@ -928,11 +927,21 @@ class DebugSourceConfiguration(SourceConfiguration):
         return DebugSource()
 
 
+class CartopyConfiguration(SourceConfiguration):
+    source_type = ('cartopy',)
+    required_keys = set('type'.split())
+
+    def source(self, params=None):
+        from mapproxy.source.cartopy import CartopySource
+        return CartopySource()
+
+
 source_configuration_types = {
     'wms': WMSSourceConfiguration,
     'arcgis': ArcGISSourceConfiguration,
     'tile': TileSourceConfiguration,
     'debug': DebugSourceConfiguration,
+    'cartopy': CartopyConfiguration,
     'mapserver': MapServerSourceConfiguration,
     'mapnik': MapnikSourceConfiguration,
 }
