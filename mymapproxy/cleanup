@@ -1,0 +1,1 @@
+mapproxy-seed --cleanup myclean1  -f mapproxy.yaml  seed.yaml 
