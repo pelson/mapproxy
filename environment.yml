@@ -1,7 +1,6 @@
 name: _conda-execute
-
 channels:
  - conda-forge
-
 dependencies:
  - conda-execute
+ - cartopy

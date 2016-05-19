@@ -1,1 +1,2 @@
-web: conda execute run.py
+web: conda execute -v run.py
+

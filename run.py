@@ -2,6 +2,7 @@
 
 # conda execute
 # env:
+#  - nomkl
 #  - python
 #  - pip
 #  - pillow
